@@ -2,7 +2,7 @@
   <div class="navbar">
     <nav>
       <img src="@/assets/bwbb.jpg" alt="boysbeingboys">
-      <h1><router-link :to="{name: 'Home'}">Bud Jamz</router-link></h1>
+      <h1><router-link :to="{name: 'Home'}">Good Time Noise</router-link></h1>
       <div class="links">
         <div v-if="user">
         <button  @click="handleLogout">Logout</button>
