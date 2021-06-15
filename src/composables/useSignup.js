@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import { projectauth } from '../firebase/config';
+import { projectAuth } from '../firebase/config';
 
 const error = ref(null);
 const isPending = ref(false);
@@ -9,7 +9,7 @@ const signup = async (email, password, displayName) => {
   isPending.value = true;
 
   try {
-    const res = await projectauth.createUserWithEmailAndPassword(
+    const res = await projectAuth.createUserWithEmailAndPassword(
       email,
       password
     );

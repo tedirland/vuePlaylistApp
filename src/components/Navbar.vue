@@ -4,9 +4,14 @@
       <img src="@/assets/bwbb.jpg" alt="boysbeingboys">
       <h1><router-link :to="{name: 'Home'}">Bud Jamz</router-link></h1>
       <div class="links">
-        <button @click="handleLogout">Logout</button>
+        <div v-if="user">
+        <button  @click="handleLogout">Logout</button>
+        </div>
+
+        <div v-else>
         <router-link class="btn" :to="{name: 'Signup'}">Sign Up</router-link>
-        <router-link  class="btn" :to="{name: 'Login'}">Login</router-link>
+        <router-link class="btn" :to="{name: 'Login'}">Login</router-link>
+        </div>
 
 
       </div>
@@ -15,12 +20,13 @@
 </template>
 
 <script>
-//imports - useRouter from vue router
-// useLogout from composables
+
 import useLogout from '../composables/useLogout'
+import getUser from '../composables/getUser'
 import {useRouter} from 'vue-router'
 export default {
   setup() {
+    const {user} = getUser()
     const { logout } = useLogout()
     const router = useRouter()
 
@@ -29,10 +35,8 @@ export default {
       console.log('user logged out')
       router.push({name: 'Login'})
     }
-    return {handleLogout}
+    return {handleLogout, user}
   }
-// - fire a function called handleSubmit when the logout button is clicked
-//inside the function, log the user out and redirect to the login view
 }
 </script>
 

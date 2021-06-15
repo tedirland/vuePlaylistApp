@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import { projectauth } from '../firebase/config';
+import { projectAuth } from '../firebase/config';
 
 // refs
 const error = ref(null);
@@ -11,7 +11,7 @@ const logout = async () => {
   isPending.value = true;
 
   try {
-    await projectauth.signOut();
+    await projectAuth.signOut();
     isPending.value = false;
   } catch (err) {
     console.log(err.message);
