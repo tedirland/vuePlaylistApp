@@ -5,6 +5,7 @@
       <h1><router-link :to="{name: 'Home'}">Good Time Noise</router-link></h1>
       <div class="links">
         <div v-if="user">
+          <router-link :to="{name: 'CreatePlaylist'}">Create Playlist</router-link>
         <button  @click="handleLogout">Logout</button>
         </div>
 
