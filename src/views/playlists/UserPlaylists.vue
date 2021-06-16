@@ -1,6 +1,6 @@
 <template>
   <div class="user-playlists">
-    <h2>My Playlists</h2>
+    <h2>{{user.displayName}}'s Playlists</h2>
     <div v-if="playlists">
       <ListView :playlists ='playlists' />
     </div>
@@ -23,7 +23,7 @@ export default {
       ['userId', '==', user.value.uid]
       )
       console.log(playlists)
-    return { playlists }
+    return { playlists, user }
   }
 
 }
