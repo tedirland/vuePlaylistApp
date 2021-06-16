@@ -15,14 +15,17 @@
 
 <script>
 import { ref } from '@vue/reactivity'
+import useDocument from '@/composables/useDocument'
 export default {
-setup() {
+  props: ['playlist'],
+setup(props) {
   const title = ref('')
   const artist = ref('')
   const ranking = ref('')
   const youtubeUrl = ref('')
   const description = ref('')
   const showForm = ref(false)
+  const {updateDoc} = useDocument('playlists', props.playlist.id)
 
 const handleSubmit = async () => {
   const newSong = {
@@ -33,7 +36,15 @@ const handleSubmit = async () => {
     youtubeUrl: youtubeUrl.value,
     description: description.value,
   }
-  console.log(newSong)
+  await updateDoc({
+    songs: [...props.playlist.songs, newSong]
+  })
+      title.value = ''
+      artist.value = ''
+      ranking.value = ''
+      youtubeUrl.value = ''
+      description.value = ''
+
 }
 
 return {title, artist, ranking, youtubeUrl, description, showForm, handleSubmit}
