@@ -18,7 +18,7 @@
       <div v-if="!playlist.songs.length">No songs have been added to this playlist yet.</div>
       <div v-for="song in playlist.songs" :key="song.id" class="single-song">
         <div class="details">
-          <h3>{{ song.title }}</h3>
+          <h3>{{song.ranking}}. {{ song.title }}</h3>
           <p>{{ song.artist }}</p>
         </div>
         <button v-if="ownership" @click="handleClick(song.id)">delete</button>
