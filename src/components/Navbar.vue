@@ -1,25 +1,32 @@
 <template>
-  <div class="navbar">
-    <nav>
-      <img src="@/assets/bwbb.jpg" alt="boysbeingboys">
-      <h1><router-link :to="{name: 'Home'}">Good Time Noise</router-link></h1>
-      <div class="links">
-        <div v-if="user">
-          <router-link :to="{name: 'CreatePlaylist'}">Create Playlist</router-link>
-          <router-link :to="{name: 'UserPlaylists'}">My Playlists</router-link>
-          <span>Howdy, {{user.displayName}}</span>
-        <button  @click="handleLogout">Logout</button>
-        </div>
-
-        <div v-else>
-        <router-link class="btn" :to="{name: 'Signup'}">Sign Up</router-link>
-        <router-link class="btn" :to="{name: 'Login'}">Login</router-link>
-        </div>
-
-
-      </div>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <router-link class="navbar-brand" :to="{name:'Home'}">Good Time Noise</router-link>
+    <button v-if="user" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div v-if="user" class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <router-link class="nav-link" :to="{name: 'Home'}">All Playlists</router-link>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Howdy, {{user.displayName}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><router-link class="dropdown-item" :to="{name: 'UserPlaylists'}">My Playlists</router-link></li>
+            <li><router-link class="dropdown-item" :to="{name: 'CreatePlaylist'}">Create Playlist</router-link></li>
+            <li><a @click="handleLogout" class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div v-else>
+     <h7>Log In to View and Create Playlists...</h7>
+    </div>
   </div>
+</nav>
 </template>
 
 <script>
@@ -50,16 +57,14 @@ export default {
     background: white;
   }
   nav {
-    display: flex;
-    align-items: center;
-    max-width: 1200px;
+
     margin: 0 auto;
   }
   nav img {
     max-height: 60px;
   }
   nav h1 {
-    margin-left: 20px;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
   nav .links {
     margin-left: auto;

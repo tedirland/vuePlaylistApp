@@ -5,6 +5,9 @@
     <input type="password" placeholder="Password" v-model="password">
     <div v-if="error" class="error">{{ error }}</div>
     <button v-if="!isPending">Log in</button>
+    <router-link class="nav-link" :to="{name: 'Signup'}">Sign Up</router-link>
+
+    <span></span>
     <button v-if="isPending" disabled>Loading</button>
   </form>
 </template>
@@ -32,3 +35,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+</style>
