@@ -2,6 +2,7 @@
   <div class="home">
     <div v-if="error" class="error">Could not fetch the data</div>
     <div v-if="documents">
+       <router-link class="btn" :to="{name: 'CreatePlaylist'}">Create A New Playlist</router-link>
       <ListView :playlists="documents" />
     </div>
   </div>
