@@ -1,6 +1,7 @@
 <template>
   <div class="add-song">
     <button v-if="!showForm" @click="showForm = true">Add To Playlist</button>
+    <butto  v-if="showForm" @click="showForm = false">Hide Form</butto>
     <form v-if="showForm" @submit.prevent="handleSubmit">
       <h4>Add a new Song</h4>
       <input type="number" min="1" max="10" placeholder="Ranking" required v-model="ranking">
@@ -60,5 +61,10 @@ return {title, artist, ranking, youtubeUrl, description, showForm, handleSubmit}
   form {
     max-width: 100%;
     text-align: left;
+  }
+
+  button {
+    color:whitesmoke;
+    background-color:aqua;
   }
 </style>

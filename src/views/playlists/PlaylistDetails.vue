@@ -4,26 +4,28 @@
 
     <!-- playlist information -->
     <div class="playlist-info">
+      <button  v-if="ownership" @click="handleDelete">Delete Playlist</button>
       <div class="cover">
         <img :src="playlist.coverUrl">
       </div>
       <h2>{{ playlist.title }}</h2>
       <p class="username">Created by {{ playlist.userName }}</p>
       <p class="description">{{ playlist.description }}</p>
-      <button v-if="ownership" @click="handleDelete">Delete Playlist</button>
-    </div>
-
-    <!-- song list -->
-    <div class="song-list">
-      <div v-if="!playlist.songs.length">No songs have been added to this playlist yet.</div>
+       <div v-if="!playlist.songs.length">No songs have been added to this playlist yet.</div>
       <div v-for="song in playlist.songs" :key="song.id" class="single-song">
         <div class="details">
           <h3>{{song.ranking}}. {{ song.title }}</h3>
           <p>{{ song.artist }}</p>
+          <p class="">{{song.description}}</p>
         </div>
         <button v-if="ownership" @click="handleClick(song.id)">delete</button>
       </div>
       <AddSong :playlist="playlist" />
+    </div>
+
+    <!-- song list -->
+    <div class="song-list">
+
     </div>
 
   </div>
@@ -67,7 +69,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .playlist-details {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -113,6 +115,13 @@ export default {
     align-items: center;
     border-bottom: 1px dashed var(--secondary);
     margin-bottom: 20px;
+  }
+
+  button {
+    color: white;
+    background-color: red;
+    margin-bottom: 5px;
+    margin-left: 5px;
   }
 </style>
 © 2021 GitHub, Inc.
